@@ -31,7 +31,7 @@ const INGREDIENT_PRICES = {
      }
      updatedUngredients[type] = upddatedCount;
      const priceAddition = INGREDIENT_PRICES[type];
-     const oldPrice = this.state.totlPrice;
+     const oldPrice = this.state.totalPrice;
      const newPrice = oldPrice + priceAddition;
 
      this.setState({
@@ -53,7 +53,7 @@ const INGREDIENT_PRICES = {
     }
     updatedUngredients[type] = upddatedCount;
     const priceDeduction = INGREDIENT_PRICES[type];
-    const oldPrice = this.state.totlPrice;
+    const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice - priceDeduction;
 
     this.setState({
@@ -76,6 +76,7 @@ const INGREDIENT_PRICES = {
         ingredientAdded={this.addIngredientHandler}
         ingredientRemoved={this.removeIngredientHandler}
         disabled={disabledInfo}
+        price={this.state.totalPrice}
         />
       </Aux>
     )
