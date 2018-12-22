@@ -38,6 +38,9 @@ const INGREDIENT_PRICES = {
       purchasing:false
     })
   }
+  purchaseContinueHandler = ()=>{
+    alert('You continue');
+  }
 
    updatePurchaseState(ingredients){    
     const sum = Object.keys(ingredients)
@@ -104,7 +107,11 @@ const INGREDIENT_PRICES = {
       <Modal 
       show={this.state.purchasing}
       modalClosed={this.purchaseCancelHandler}>
-        <OrderSummary ingredients={this.state.ingredients}/>
+        <OrderSummary 
+        ingredients={this.state.ingredients}
+        purchaseCanceled={this.purchaseCancelHandler}
+        purchaseContinued={this.purchaseContinueHandler}
+        />
       </Modal>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControls
