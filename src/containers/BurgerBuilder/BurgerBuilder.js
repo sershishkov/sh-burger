@@ -33,6 +33,12 @@ const INGREDIENT_PRICES = {
      })
    }
 
+   purchaseCancelHandler = ()=>{
+    this.setState({
+      purchasing:false
+    })
+  }
+
    updatePurchaseState(ingredients){    
     const sum = Object.keys(ingredients)
     .map(ingrKey =>{
@@ -95,7 +101,9 @@ const INGREDIENT_PRICES = {
     }
     return (
       <Aux>
-      <Modal show={this.state.purchasing}>
+      <Modal 
+      show={this.state.purchasing}
+      modalClosed={this.purchaseCancelHandler}>
         <OrderSummary ingredients={this.state.ingredients}/>
       </Modal>
         <Burger ingredients={this.state.ingredients}/>
