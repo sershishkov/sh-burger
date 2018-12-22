@@ -22,12 +22,18 @@ const INGREDIENT_PRICES = {
       meat:0
      },
      totalPrice:4,
-     purchasable:false
+     purchasable:false,
+     purchasing:false,
      
    }
 
-   updatePurchaseState(ingredients){
-    
+   purchaseHandler = ()=>{
+     this.setState({
+       purchasing:true
+     })
+   }
+
+   updatePurchaseState(ingredients){    
     const sum = Object.keys(ingredients)
     .map(ingrKey =>{
       return ingredients[ingrKey];
@@ -89,7 +95,7 @@ const INGREDIENT_PRICES = {
     }
     return (
       <Aux>
-      <Modal>
+      <Modal show={this.state.purchasing}>
         <OrderSummary ingredients={this.state.ingredients}/>
       </Modal>
         <Burger ingredients={this.state.ingredients}/>
@@ -98,6 +104,7 @@ const INGREDIENT_PRICES = {
         ingredientRemoved={this.removeIngredientHandler}
         disabled={disabledInfo}
         purchasable={this.state.purchasable}
+        ordered={this.purchaseHandler}
         price={this.state.totalPrice}
         />
       </Aux>
