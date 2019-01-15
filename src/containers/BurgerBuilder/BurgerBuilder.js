@@ -22,7 +22,7 @@ import * as actionTypes from '../../store/types';
    state = {
     //  ingredients:null,
     //  totalPrice:4,
-     purchasable:false,
+    //  purchasable:false,
      purchasing:false,
      loading:false,
      error:false
@@ -73,11 +73,8 @@ import * as actionTypes from '../../store/types';
       return ingredients[ingrKey];
     }).reduce((sum, el)=>{
       return sum + el;
-    },0);
-
-    this.setState({
-      purchasable: sum > 0
-    })
+    },0);    
+     return sum > 0;   
    }
 
   //  addIngredientHandler = (type) =>{
@@ -138,7 +135,7 @@ import * as actionTypes from '../../store/types';
           ingredientAdded={this.props.onIngredientAdded}
           ingredientRemoved={this.props.onIngredientRemoved}
           disabled={disabledInfo}
-          purchasable={this.state.purchasable}
+          purchasable={this.updatePurchaseState(this.props.ings)}
           ordered={this.purchaseHandler}
           price={this.props.price}
           />
